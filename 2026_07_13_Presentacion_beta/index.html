@@ -39,6 +39,14 @@
   <symbol id="i-radio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2"/><path d="M7.8 16.2a6 6 0 0 1 0-8.4"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4"/><path d="M19.1 4.9a10 10 0 0 1 0 14.2"/></symbol>
 </svg>
 
+<!-- Vuelta a la portada. Discreto: casi transparente hasta que el cursor se acerca.
+     Se oculta solo cuando ya estás en la primera diapositiva. -->
+<button id="home" type="button" aria-label="Volver a la portada" title="Volver a la portada (Inicio)">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M3 10.2 12 3l9 7.2"/><path d="M5 9.5V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.5"/><path d="M9.5 21v-6h5v6"/>
+  </svg>
+</button>
+
 <div class="reveal">
 <div class="slides">
 
@@ -734,6 +742,13 @@
   document.querySelectorAll('.reveal .fragment').forEach(function (el) {
     if (!el.className.match(/fade-|grow|shrink|highlight|zoom/)) el.classList.add('fade-up');
   });
+
+  // Botón de inicio: vuelve a la portada y se esconde cuando ya estás en ella.
+  var home = document.getElementById('home');
+  home.addEventListener('click', function () { Reveal.slide(0, 0); });
+  function syncHome() { home.hidden = Reveal.getIndices().h === 0; }
+  Reveal.on('ready', syncHome);
+  Reveal.on('slidechanged', syncHome);
 
   // Mientras falte una captura, en su lugar se dibuja un marcador con el nombre exacto
   // del archivo que hay que dejar en img/. Al agregarla, el marcador desaparece solo.

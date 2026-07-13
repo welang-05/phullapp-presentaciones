@@ -351,7 +351,54 @@
 }
 .stamp img { width: 1.1rem; opacity: 0.7; }
 
+/* ── Botón de inicio (arriba a la izquierda) ──────────────────────────────
+   Deliberadamente tenue: presente pero sin competir con el contenido. Se revela
+   al acercar el cursor y desaparece cuando ya estás en la portada. */
+#home {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 50;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 0.7rem;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--muted-foreground);
+  cursor: pointer;
+  opacity: 0.22;
+  transition: opacity 200ms ease, background-color 200ms ease,
+              border-color 200ms ease, color 200ms ease, transform 200ms ease;
+}
+#home svg { width: 1.15rem; height: 1.15rem; }
+
+#home:hover,
+#home:focus-visible {
+  opacity: 1;
+  color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 12%, var(--card));
+  border-color: color-mix(in srgb, var(--primary) 40%, transparent);
+  transform: translateY(-1px);
+}
+#home:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+#home:active { transform: translateY(0); }
+
+/* En la portada no hay a dónde volver: se esconde y deja de recibir clics. */
+#home[hidden] { display: none; }
+
+/* En pantallas táctiles no hay hover, así que se deja algo más visible
+   y con un área de toque cómoda. */
+@media (pointer: coarse) {
+  #home { opacity: 0.4; width: 2.75rem; height: 2.75rem; }
+}
+
 /* ── Accesibilidad: menos movimiento ──────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   .reveal .slides section, .pal .sw i, .chargebar .vessel::after { animation: none !important; transition: none !important; }
+  #home { transition: none; }
+  #home:hover, #home:focus-visible { transform: none; }
 }
