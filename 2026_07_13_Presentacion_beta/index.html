@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PhullApp · Presentación beta</title>
+  <!-- Material previo al lanzamiento: se comparte por enlace, no se indexa en buscadores. -->
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="googlebot" content="noindex, nofollow">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="theme.css">
+</head>
+<body>
+
+<!-- Sprite de íconos (lucide) -->
+<svg style="display:none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <g id="s" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"></g>
+  </defs>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h7l-2 8L20 10h-7l2-8z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol>
+  <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.94 15.5A2 2 0 0 0 8.5 14.06l-6.14-1.58a.5.5 0 0 1 0-.96L8.5 9.94A2 2 0 0 0 9.94 8.5l1.58-6.14a.5.5 0 0 1 .96 0L14.06 8.5A2 2 0 0 0 15.5 9.94l6.14 1.58a.5.5 0 0 1 0 .96L15.5 14.06a2 2 0 0 0-1.44 1.44l-1.58 6.14a.5.5 0 0 1-.96 0z"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.65-.75 1.65-1.69 0-.44-.18-.83-.44-1.12-.29-.29-.44-.65-.44-1.13a1.64 1.64 0 0 1 1.67-1.67h2c3.05 0 5.55-2.5 5.55-5.55C21.97 6.01 17.46 2 12 2z"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m17 8-5-5-5 5"/><path d="M12 3v12"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M10.27 21a2 2 0 0 0 3.46 0"/><path d="M3.26 15.33A1 1 0 0 0 4 17h16a1 1 0 0 0 .74-1.67C19.41 13.96 18 12.5 18 8A6 6 0 0 0 6 8c0 4.5-1.41 5.96-2.74 7.33"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="14" height="20" x="5" y="2" rx="2"/><path d="M12 18h.01"/></symbol>
+  <symbol id="i-msg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22z"/></symbol>
+  <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="5" rx="2"/><path d="M2 10h20"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+  <symbol id="i-radio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4.9 19.1a10 10 0 0 1 0-14.2"/><path d="M7.8 16.2a6 6 0 0 1 0-8.4"/><circle cx="12" cy="12" r="2"/><path d="M16.2 7.8a6 6 0 0 1 0 8.4"/><path d="M19.1 4.9a10 10 0 0 1 0 14.2"/></symbol>
+</svg>
+
+<div class="reveal">
+<div class="slides">
+
+<!-- ══════════════════════════ 1 · PORTADA ══════════════════════════ -->
+<section data-auto-animate class="cover">
+  <img class="logo" src="assets/phullapp_logo_n_derecha_dark.svg" alt="PhullApp">
+  <h1 class="display">Donde tu gym<br><span class="underline-brand">florece<svg viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 8C40 3 90 3 198 6"/></svg></span>.</h1>
+  <p class="sub">La plataforma de reservas, rutinas y gestión para gimnasios y estudios. Cliente, instructor y administrador, en una sola app.</p>
+  <div class="meta">
+    <span class="chip on"><svg width="14" height="14"><use href="#i-sparkles"/></svg> Beta final · esta semana</span>
+    <span class="chip"><svg width="14" height="14"><use href="#i-phone"/></svg> iOS · Android · Web</span>
+    <span class="chip"><svg width="14" height="14"><use href="#i-calendar"/></svg> Lanzamiento a tiendas: próxima semana</span>
+  </div>
+</section>
+
+<!-- ══════════════════════════ 2 · PROBLEMA ══════════════════════════ -->
+<section>
+  <span class="kicker">El punto de partida</span>
+  <h2 class="display">Los gimnasios se gestionan<br>con WhatsApp y planillas.</h2>
+  <div class="grid g3" style="margin-top:1.6rem">
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-msg"/></svg></span>
+      <h3>Todo pasa por el chat</h3>
+      <p>Reservas, cancelaciones y cobros se persiguen a mano, uno por uno.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-grid"/></svg></span>
+      <h3>Los números no se confían</h3>
+      <p>Nadie sabe con certeza cuántos activos hay, ni quién está por vencer.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-phone"/></svg></span>
+      <h3>Y las apps existentes aburren</h3>
+      <p>El panel es un menú: el socio entra, mira un dato y se va. Todos los gimnasios se ven igual.</p>
+    </div>
+  </div>
+  <p class="small muted fragment fade-up" style="margin-top:1.6rem">Ese último punto es el que decidimos atacar.</p>
+</section>
+
+<!-- ══════════════════════════ 3 · LA APUESTA ══════════════════════════ -->
+<section>
+  <span class="kicker">Nuestra apuesta</span>
+  <h2 class="display">El panel <em>hace algo</em> cuando lo abres.</h2>
+  <div class="grid g3" style="margin-top:1.6rem">
+    <div class="card hl fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-zap"/></svg></span>
+      <h3>Cero toques para informarse</h3>
+      <p>Lo valioso está visible al abrir: tu próxima clase, tus créditos, la clase que está corriendo ahora.</p>
+    </div>
+    <div class="card hl fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-check"/></svg></span>
+      <h3>Un toque para actuar</h3>
+      <p>Cada tarjeta trae su acción al lado. Reservar toma 10 segundos, no cinco pantallas.</p>
+    </div>
+    <div class="card hl fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-palette"/></svg></span>
+      <h3>Cada gimnasio, distinto</h3>
+      <p>Paleta propia, banner de marca y widgets configurables por rol. Dos gimnasios no se sienten la misma app.</p>
+    </div>
+  </div>
+  <p class="small muted fragment fade-up" style="margin-top:1.4rem">Las tarjetas automáticas aparecen <strong>sólo cuando aportan algo ahora</strong>, y después desaparecen. Nunca un "no hay nada nuevo".</p>
+</section>
+
+<!-- ══════════════════════════ 4 · TRES ROLES ══════════════════════════ -->
+<section>
+  <span class="kicker">Una app, tres experiencias</span>
+  <h2 class="display">Tres roles dentro de cada gimnasio.</h2>
+  <div class="grid g3" style="margin-top:1.8rem">
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-users"/></svg></span>
+      <h3>Cliente</h3>
+      <p>Reserva, entrena, registra sus cargas y ve su progreso. Casi siempre desde el celular.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-clipboard"/></svg></span>
+      <h3>Instructor</h3>
+      <p>Corre sus clases, pasa lista, corrige registros y ve sus propios números.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-shield"/></svg></span>
+      <h3>Administrador</h3>
+      <p>Opera el negocio: horario, miembros, pagos, estadísticas y personalización.</p>
+    </div>
+  </div>
+  <p class="small muted fragment fade-up" style="margin-top:1.6rem">Los permisos son <strong>granulares</strong>: el administrador decide, instructor por instructor, qué puede hacer cada uno.</p>
+</section>
+
+<!-- ══════════════════════════ CLIENTE ══════════════════════════ -->
+<section class="divider" data-auto-animate>
+  <div class="role-ico"><svg width="34" height="34"><use href="#i-users"/></svg></div>
+  <h2 class="display">Cliente</h2>
+  <p class="sub">Reservar en 10 segundos. Entrenar con la app en la mano. Ver que avanzas.</p>
+</section>
+
+<!-- 6 · Dashboard cliente -->
+<section>
+  <div class="split">
+    <div>
+      <span class="kicker">Abrir y saber qué hacer</span>
+      <h2 class="display">El panel del cliente</h2>
+      <ul class="small">
+        <li class="fragment fade-up"><strong>Saludo motivacional</strong> que cambia según el contexto (racha, clima, tu próxima clase).</li>
+        <li class="fragment fade-up"><strong>Tu próxima clase</strong>, con el clima y la calidad del aire a esa hora.</li>
+        <li class="fragment fade-up"><strong>Esta semana</strong>: clases asistidas, ejercicios registrados y récords.</li>
+        <li class="fragment fade-up"><strong>Tu progreso</strong>: racha de semanas y últimos logros.</li>
+        <li class="fragment fade-up"><strong>Novedades</strong> del gimnasio y accesos rápidos.</li>
+      </ul>
+      <p class="tiny muted fragment fade-up">El administrador elige qué widgets ve cada rol.</p>
+    </div>
+    <div class="phone"><img src="img/01_cliente_dashboard.jpg" alt="Panel del cliente"></div>
+  </div>
+</section>
+
+<!-- 7 · Reservar -->
+<section>
+  <div class="split rev">
+    <div class="duo">
+      <div class="phone"><img src="img/02_cliente_reservar_horario.jpg" alt="Calendario de reservas"></div>
+      <div class="phone"><img src="img/03_cliente_reserva_detalle.jpg" alt="Detalle de sesión y reserva"></div>
+    </div>
+    <div>
+      <span class="kicker">Reservar</span>
+      <h2 class="display">Diez segundos,<br>sin pensarlo.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">Calendario mobile-first con <strong>cupos a la vista</strong>.</li>
+        <li class="fragment fade-up"><strong>Lista de espera</strong> con tu posición a la vista. Si alguien cancela, sube el siguiente y le llega el aviso.</li>
+        <li class="fragment fade-up">Los cupos <strong>bajan solos en pantalla</strong> cuando otro socio reserva. Sin recargar.</li>
+        <li class="fragment fade-up">Reglas que se cumplen solas: ventana de reserva, plazo de cancelación, exigencia de membresía.</li>
+        <li class="fragment fade-up">¿No hay horario que te sirva? <strong>Solicita una sesión</strong> y el gimnasio la evalúa.</li>
+      </ul>
+      <div class="card hl fragment fade-up" style="margin-top:1rem">
+        <h3 style="font-size:0.62em">Y el tiempo que va a hacer</h3>
+        <p class="tiny">Junto a la clase que estás por reservar: <strong>temperatura, lluvia, viento y calidad del aire a esa hora</strong>. En el sur de Chile eso decide si vas o no — y el chip de aire detecta el <strong>humo de leña</strong> (PM2.5), no sólo si llueve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 · ⭐ WIDGET EN VIVO -->
+<section>
+  <div class="split">
+    <div>
+      <span class="chip star" style="margin-bottom:0.9rem"><svg width="13" height="13"><use href="#i-sparkles"/></svg> Nos distingue</span>
+      <h2 class="display">"Estás en clase<br>ahora mismo."</h2>
+      <p class="small muted">Mientras la clase corre, el panel se transforma. No hay que buscar nada: el widget aparece solo.</p>
+      <ul class="small">
+        <li class="fragment fade-up">Se abre <strong>en el mismo panel</strong>, sin navegar ni abrir modales.</li>
+        <li class="fragment fade-up">Trae la <strong>rutina del día</strong> y precarga tus cargas de la última vez.</li>
+        <li class="fragment fade-up">Confirmas serie por serie con <strong>steppers grandes</strong>, pensados para usar transpirado y con una mano.</li>
+        <li class="fragment fade-up"><strong>Autoguardado</strong>: no existe el botón "Guardar". Si te equivocaste, corriges ahí mismo.</li>
+      </ul>
+    </div>
+    <div class="duo">
+      <div class="phone"><img src="img/04_cliente_widget_vivo_colapsado.jpg" alt="Widget en vivo colapsado"></div>
+      <div class="phone"><img src="img/05_cliente_widget_vivo_expandido.jpg" alt="Widget en vivo expandido"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · ⭐ GAMIFICACIÓN -->
+<section>
+  <div class="split rev">
+    <div class="phone"><img src="img/07_cliente_rutina_completa.jpg" alt="Rutina completada"></div>
+    <div>
+      <span class="chip star" style="margin-bottom:0.9rem"><svg width="13" height="13"><use href="#i-sparkles"/></svg> Nos distingue</span>
+      <h2 class="display">Registrar<br>se siente bien.</h2>
+      <p class="small muted">Una barra se carga con cada serie confirmada: una vasija por bloque, el trofeo al final.</p>
+      <div class="chargebar" style="margin:1.2rem 0">
+        <span class="vessel" style="--fill:1"></span>
+        <span class="vessel" style="--fill:1"></span>
+        <span class="vessel" style="--fill:.6"></span>
+        <span class="vessel" style="--fill:0"></span>
+        <span class="trophy"><svg width="13" height="13"><use href="#i-trophy"/></svg></span>
+      </div>
+      <ul class="small">
+        <li class="fragment fade-up">Funciona con <strong>cualquier medida</strong>: peso, repeticiones, tiempo, distancia, intensidad.</li>
+        <li class="fragment fade-up">Un <strong>récord personal</strong> enciende el tramo en dorado, en el momento.</li>
+        <li class="fragment fade-up">Al terminar la rutina, una celebración breve. Y respeta "menos movimiento" del sistema.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · Rutinas y ejercicios -->
+<section>
+  <span class="kicker">Rutinas de verdad</span>
+  <h2 class="display">Bloques, superseries y circuitos.</h2>
+  <div class="grid g2" style="margin-top:1.4rem; align-items:start">
+    <div>
+      <ul class="small">
+        <li class="fragment fade-up">Una rutina es una lista de <strong>bloques</strong>: individual, superserie, circuito o mixto.</li>
+        <li class="fragment fade-up">Un circuito entero se registra como <strong>rondas</strong>, no ejercicio por ejercicio.</li>
+        <li class="fragment fade-up">El instructor decide la granularidad: confirmar <strong>por serie</strong> o un solo "Hecho" por ejercicio.</li>
+        <li class="fragment fade-up">Biblioteca de ejercicios con <strong>imagen, video propio o link de YouTube</strong> — y cada gimnasio puede sobrescribir el suyo.</li>
+        <li class="fragment fade-up">Cada registro admite <strong>notas</strong> ("me sentí cansado", "molestia en el hombro").</li>
+        <li class="fragment fade-up">Al terminar, el alumno reporta la <strong>intensidad percibida</strong> de la clase. Ese dato alimenta las estadísticas del instructor.</li>
+      </ul>
+    </div>
+    <div class="duo">
+      <div class="phone"><img src="img/08_rutina_bloques.jpg" alt="Rutina con bloques"></div>
+      <div class="phone"><img src="img/09_ejercicio_video.jpg" alt="Ejercicio con video"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 11 · Progreso -->
+<section>
+  <div class="split">
+    <div>
+      <span class="kicker">Mi progreso</span>
+      <h2 class="display">La prueba de que<br>estás avanzando.</h2>
+      <ul class="small">
+        <li class="fragment fade-up"><strong>Evolución por ejercicio</strong>: cómo subió tu carga en el tiempo.</li>
+        <li class="fragment fade-up"><strong>Récords personales</strong> vigentes, por ejercicio y por medida.</li>
+        <li class="fragment fade-up">Historial de sesiones y asistencia.</li>
+        <li class="fragment fade-up">Medidas corporales y fotos de progreso.</li>
+      </ul>
+    </div>
+    <div class="duo">
+      <div class="phone"><img src="img/10_cliente_progreso.jpg" alt="Mi progreso"></div>
+      <div class="phone"><img src="img/11_cliente_records.jpg" alt="Récords personales"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 12 · Logros -->
+<section>
+  <div class="split rev">
+    <div class="phone"><img src="img/12_cliente_logros.jpg" alt="Logros y medallas"></div>
+    <div>
+      <span class="kicker">Constancia</span>
+      <h2 class="display">Logros, medallas<br>y racha.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">Medallas por <strong>niveles</strong>, de cobre a diamante, con su propia paleta metálica.</li>
+        <li class="fragment fade-up">Repetibles: <em>Semana activa</em>, <em>Cazador de récords</em>, <em>Madrugador</em>, <em>Búho</em>.</li>
+        <li class="fragment fade-up">Únicos: <em>Primer récord</em>, <em>Club de las 100</em>, <em>Mes de hierro</em>, <em>Todoterreno</em>.</li>
+        <li class="fragment fade-up">Racha de <strong>semanas seguidas</strong> entrenando, siempre visible en el panel.</li>
+      </ul>
+      <p class="tiny muted fragment fade-up">Gamificación medida: celebra sin convertirse en un juego de insignias.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 13 · Novedades -->
+<section>
+  <div class="split">
+    <div>
+      <span class="kicker">Comunidad</span>
+      <h2 class="display">Novedades, reacciones<br>y encuestas.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">El muro del gimnasio: avisos con <strong>imagen, video o YouTube</strong>.</li>
+        <li class="fragment fade-up"><strong>Reacciones con emoji</strong> de un toque — y manteniendo presionado, quién reaccionó.</li>
+        <li class="fragment fade-up"><strong>Encuestas</strong> de opciones fijas, con o sin fecha de cierre. Resultados en barras.</li>
+        <li class="fragment fade-up">Audiencia por rol: publica sólo para clientes, instructores o todos.</li>
+        <li class="fragment fade-up">Al publicar, avisa por notificación (y por correo, si el gimnasio lo activa).</li>
+      </ul>
+    </div>
+    <div class="duo">
+      <div class="phone"><img src="img/14_cliente_novedades.jpg" alt="Novedades"></div>
+      <div class="phone"><img src="img/15_cliente_encuesta.jpg" alt="Encuesta"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 14 · Membresía -->
+<section>
+  <div class="split rev">
+    <div class="phone"><img src="img/16_cliente_membresia.jpg" alt="Mi membresía"></div>
+    <div>
+      <span class="kicker">Membresía</span>
+      <h2 class="display">Cuánto te queda,<br>sin ambigüedad.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">Planes <strong>ilimitados, por créditos o clase suelta</strong>.</li>
+        <li class="fragment fade-up">Créditos restantes y fecha de vencimiento siempre visibles.</li>
+        <li class="fragment fade-up">Aviso cuando el plan está por vencer, con la renovación a un toque.</li>
+        <li class="fragment fade-up">Pago en línea o registro manual del pago por el administrador.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ INSTRUCTOR ══════════════════════════ -->
+<section class="divider" data-auto-animate>
+  <div class="role-ico"><svg width="34" height="34"><use href="#i-clipboard"/></svg></div>
+  <h2 class="display">Instructor</h2>
+  <p class="sub">Su semana clara, su clase bajo control, sus alumnos a la vista.</p>
+</section>
+
+<!-- 16 · Día del instructor -->
+<section>
+  <div class="split">
+    <div>
+      <span class="kicker">Su día, resuelto</span>
+      <h2 class="display">Sabe quién viene<br>antes de entrar.</h2>
+      <ul class="small">
+        <li class="fragment fade-up"><strong>Mis clases</strong>: su semana, con cupos y anotados.</li>
+        <li class="fragment fade-up">La lista de asistentes con lo que importa: <strong>primerizos, lesiones, cumpleaños</strong>.</li>
+        <li class="fragment fade-up">Asistencia masiva en un toque.</li>
+        <li class="fragment fade-up">Gestiona su <strong>disponibilidad</strong> y sus rutinas.</li>
+      </ul>
+    </div>
+    <div class="phone"><img src="img/17_instructor_dashboard.jpg" alt="Panel del instructor"></div>
+  </div>
+</section>
+
+<!-- 17 · ⭐ Widget en vivo instructor -->
+<section>
+  <div class="split rev">
+    <div class="phone"><img src="img/19_instructor_widget_vivo.jpg" alt="Widget en vivo del instructor"></div>
+    <div>
+      <span class="chip star" style="margin-bottom:0.9rem"><svg width="13" height="13"><use href="#i-sparkles"/></svg> Nos distingue</span>
+      <h2 class="display">La clase en vivo,<br>desde su celular.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">La lista de alumnos <strong>se actualiza en tiempo real</strong> a medida que cada uno confirma sus series.</li>
+        <li class="fragment fade-up">Ve el avance de cada uno: <strong>"8/12 series · 67%"</strong>.</li>
+        <li class="fragment fade-up">Puede <strong>registrar por el alumno</strong> que no trajo el teléfono, o corregir un valor mal cargado.</li>
+        <li class="fragment fade-up">Control por reserva: decide si el registro lo edita el alumno, el instructor, o queda bloqueado.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 18 · Alumnos -->
+<section>
+  <div class="split">
+    <div>
+      <span class="kicker">Alumnos</span>
+      <h2 class="display">Quién se está<br>descolgando.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">Ficha de cada alumno: datos, contacto de emergencia, asistencia e historial.</li>
+        <li class="fragment fade-up"><strong>Alumnos en riesgo</strong> de dejar de venir, con el factor principal.</li>
+        <li class="fragment fade-up">Contacto directo por WhatsApp y acceso a su progreso.</li>
+      </ul>
+      <p class="tiny muted fragment fade-up">Sin datos financieros: el instructor ve la persona, no la caja.</p>
+    </div>
+    <div class="phone"><img src="img/21_instructor_alumnos.jpg" alt="Lista de alumnos"></div>
+  </div>
+</section>
+
+<!-- 19 · Stats instructor -->
+<section>
+  <div class="split rev">
+    <div class="laptop"><img src="img/23_instructor_estadisticas.jpg" alt="Estadísticas del instructor"></div>
+    <div>
+      <span class="kicker">Sus números</span>
+      <h2 class="display">Cómo le está yendo.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">Ocupación, asistencia, no-show y sus clases más concurridas.</li>
+        <li class="fragment fade-up"><strong>Retención</strong> de sus alumnos a 4 y 8 semanas.</li>
+        <li class="fragment fade-up">Intensidad promedio percibida de sus clases.</li>
+        <li class="fragment fade-up">Comparación contra el promedio del estudio, <strong>sin nombrar a los demás</strong>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ ADMIN ══════════════════════════ -->
+<section class="divider" data-auto-animate>
+  <div class="role-ico"><svg width="34" height="34"><use href="#i-shield"/></svg></div>
+  <h2 class="display">Administrador</h2>
+  <p class="sub">El negocio completo, sin exportar nada a una planilla.</p>
+</section>
+
+<!-- 21 · Dashboard admin -->
+<section>
+  <span class="kicker">El negocio en 30 segundos</span>
+  <h2 class="display">Todo lo importante, al abrir.</h2>
+  <div class="grid g4" style="margin:1.4rem 0 1.6rem">
+    <div class="card kpi fragment fade-up"><div class="n">142</div><div class="l">Miembros activos</div></div>
+    <div class="card kpi fragment fade-up"><div class="n">38</div><div class="l">Reservas de hoy</div></div>
+    <div class="card kpi fragment fade-up"><div class="n">86%</div><div class="l">Ocupación</div></div>
+    <div class="card kpi fragment fade-up"><div class="n">7</div><div class="l">Por vencer</div></div>
+  </div>
+  <div class="laptop" style="max-width:70%; margin:0 auto"><img src="img/24_admin_dashboard.jpg" alt="Panel del administrador"></div>
+</section>
+
+<!-- 22 · ⭐ Multi-sesión en vivo -->
+<section>
+  <div class="split">
+    <div>
+      <span class="chip star" style="margin-bottom:0.9rem"><svg width="13" height="13"><use href="#i-sparkles"/></svg> Nos distingue</span>
+      <h2 class="display">Todas las clases<br>en vivo, a la vez.</h2>
+      <ul class="small">
+        <li class="fragment fade-up">Lista de <strong>todas las sesiones en curso</strong> del gimnasio, en tiempo real.</li>
+        <li class="fragment fade-up">Entra a cualquiera y ve el mismo detalle que su instructor.</li>
+        <li class="fragment fade-up">Si un instructor faltó, el administrador toma la clase desde ahí.</li>
+      </ul>
+    </div>
+    <div class="laptop"><img src="img/25_admin_sesiones_vivo.jpg" alt="Sesiones en vivo (admin)"></div>
+  </div>
+</section>
+
+<!-- 23 · Horario y dinero -->
+<section>
+  <span class="kicker">La operación</span>
+  <h2 class="display">Horario y cobros, ordenados.</h2>
+  <div class="grid g2" style="margin-top:1.5rem; align-items:start">
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-calendar"/></svg></span>
+      <h3>Horario</h3>
+      <p style="margin-bottom:0.7em">Tres capas: <strong>clase → regla semanal → sesión</strong>. Las sesiones se generan solas.</p>
+      <ul class="tiny" style="margin-left:1em">
+        <li>Cupos, lista de espera y ventana de reserva por gimnasio.</li>
+        <li><strong>Clases privadas</strong> por plan o por lista de personas.</li>
+        <li><strong>Solicitudes</strong>: el socio pide un horario, el admin lo aprueba.</li>
+      </ul>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-card"/></svg></span>
+      <h3>Membresías y dinero</h3>
+      <p style="margin-bottom:0.7em">Paquetes <strong>ilimitados, por créditos o clase suelta</strong>, con su suscripción y ciclo de cobro.</p>
+      <ul class="tiny" style="margin-left:1em">
+        <li><strong>Pago en línea</strong> con Flow, o manual (efectivo, transferencia, cheque).</li>
+        <li><strong>Renovaciones</strong>: el socio adjunta el comprobante, el admin aprueba.</li>
+        <li>Quién está al día, pendiente o vencido — de un vistazo.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 25 · ⭐ IMPORTACIÓN -->
+<section>
+  <div class="split rev">
+    <div class="duo">
+      <div class="laptop" style="width:100%"><img src="img/28_admin_importacion.jpg" alt="Importación de usuarios"></div>
+    </div>
+    <div>
+      <span class="chip star" style="margin-bottom:0.9rem"><svg width="13" height="13"><use href="#i-sparkles"/></svg> Nos distingue</span>
+      <h2 class="display">Traer tu gimnasio<br>completo, en minutos.</h2>
+      <p class="small muted">La barrera número uno para cambiar de sistema es la carga inicial. La eliminamos.</p>
+      <ul class="small">
+        <li class="fragment fade-up">Arrastra tu planilla: <strong>CSV o XLSX</strong>, hasta 8 MB.</li>
+        <li class="fragment fade-up">La app <strong>reconoce las columnas sola</strong> y te deja corregir el mapeo.</li>
+        <li class="fragment fade-up"><strong>Asigna el plan</strong> a cada grupo importado, ahí mismo.</li>
+        <li class="fragment fade-up">Decide qué hacer con los que ya existen: omitir, actualizar o marcar error.</li>
+        <li class="fragment fade-up">Envía la <strong>invitación por correo</strong> a los nuevos, en el mismo paso.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- 26 · Estadísticas -->
+<section>
+  <span class="kicker">Estadísticas</span>
+  <h2 class="display">Números en los que se puede confiar.</h2>
+  <div class="grid g4" style="margin:1.3rem 0">
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Resumen</h3><p class="tiny">KPIs del período, con comparación contra el anterior.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Clases</h3><p class="tiny">Ocupación, no-show, clases más llenas, horarios muertos.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Miembros</h3><p class="tiny">Altas, antigüedad, retención por cohorte y riesgo de abandono.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Ingresos</h3><p class="tiny">Facturación del período, por paquete y método de pago.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Intensidad</h3><p class="tiny">Esfuerzo percibido reportado por los alumnos, por clase.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Año</h3><p class="tiny">12 meses, comparación contra el año anterior y cohortes de alta.</p></div>
+    <div class="card hl fragment fade-up"><h3 style="font-size:0.6em">Comparación</h3><p class="tiny">Ranking de instructores en ejes normalizados. Sólo el admin lo ve.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.6em">Como instructor</h3><p class="tiny">La vista propia de cada instructor, sin datos del negocio.</p></div>
+  </div>
+  <div class="laptop" style="max-width:56%; margin:0 auto"><img src="img/29_admin_estadisticas.jpg" alt="Estadísticas"></div>
+</section>
+
+<!-- 27 · Configuración -->
+<section>
+  <span class="kicker">Configuración</span>
+  <h2 class="display">El gimnasio decide cómo se ve su app.</h2>
+  <div class="grid g3" style="margin-top:1.6rem">
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Widgets por rol</h3><p class="tiny">Qué ve el cliente y qué ve el instructor al abrir el panel. Se encienden y apagan uno por uno.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Permisos por instructor</h3><p class="tiny">Seis capacidades por persona (clases, sesiones, rutinas, asistencia, novedades), con un valor por defecto de la organización.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Banner de marca</h3><p class="tiny">Imagen o video propio en el panel, con enlace a una promoción.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Reglas del gimnasio</h3><p class="tiny">Reserva, cancelación, lista de espera y exigencia de pago.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Comunicación</h3><p class="tiny">Grupo de WhatsApp, plantillas de correo y el canal de cada notificación.</p></div>
+    <div class="card hl fragment fade-up"><h3 style="font-size:0.62em">Apariencia</h3><p class="tiny">Su paleta de color. Es la que viene a continuación.</p></div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ DIFERENCIADORES ══════════════════════════ -->
+<section class="divider" data-auto-animate>
+  <div class="role-ico"><svg width="34" height="34"><use href="#i-sparkles"/></svg></div>
+  <h2 class="display">Lo que nos distingue</h2>
+  <p class="sub">Lo que ninguna de las apps de gimnasio que miramos hace.</p>
+</section>
+
+<!-- 29 · ⭐ PALETAS -->
+<section>
+  <span class="chip star"><svg width="13" height="13"><use href="#i-palette"/></svg> Nos distingue</span>
+  <h2 class="display" style="margin-top:0.7rem">Cada gimnasio, su propio color.</h2>
+  <p class="small muted">Doce paletas completas inspiradas en <strong>aves chilenas</strong>. Se aplican a toda la app —botones, gráficos, toasts, degradado de marca— en claro y oscuro.</p>
+  <div class="palettes" style="margin:1.5rem 0">
+    <div class="pal"><div class="sw"><i style="background:#0a7a6d; animation-delay:0ms"></i><i style="background:#2dd4bf; animation-delay:30ms"></i></div><div class="nm">Teal</div></div>
+    <div class="pal"><div class="sw"><i style="background:#c2395c; animation-delay:60ms"></i><i style="background:#f9a8c8; animation-delay:90ms"></i></div><div class="nm">Flamenco</div></div>
+    <div class="pal"><div class="sw"><i style="background:#6b5e50; animation-delay:120ms"></i><i style="background:#c4a88e; animation-delay:150ms"></i></div><div class="nm">Tenca</div></div>
+    <div class="pal"><div class="sw"><i style="background:#8a6d0b; animation-delay:180ms"></i><i style="background:#fbbf24; animation-delay:210ms"></i></div><div class="nm">Cometocino</div></div>
+    <div class="pal"><div class="sw"><i style="background:#2d5a3e; animation-delay:240ms"></i><i style="background:#6ee7a0; animation-delay:270ms"></i></div><div class="nm">Pidén</div></div>
+    <div class="pal"><div class="sw"><i style="background:#b91c1c; animation-delay:300ms"></i><i style="background:#f87171; animation-delay:330ms"></i></div><div class="nm">Loica</div></div>
+    <div class="pal"><div class="sw"><i style="background:#334155; animation-delay:360ms"></i><i style="background:#94a3b8; animation-delay:390ms"></i></div><div class="nm">Cóndor</div></div>
+    <div class="pal"><div class="sw"><i style="background:#9a3412; animation-delay:420ms"></i><i style="background:#fb923c; animation-delay:450ms"></i></div><div class="nm">Chucao</div></div>
+    <div class="pal"><div class="sw"><i style="background:#0369a1; animation-delay:480ms"></i><i style="background:#38bdf8; animation-delay:510ms"></i></div><div class="nm">Martín Pescador</div></div>
+    <div class="pal"><div class="sw"><i style="background:#1e3a8a; animation-delay:540ms"></i><i style="background:#d97706; animation-delay:570ms"></i></div><div class="nm">Siete Colores</div></div>
+    <div class="pal"><div class="sw"><i style="background:#835025; animation-delay:600ms"></i><i style="background:#d4a46a; animation-delay:630ms"></i></div><div class="nm">Rayadito</div></div>
+    <div class="pal"><div class="sw"><i style="background:#4a5e28; animation-delay:660ms"></i><i style="background:#a3c265; animation-delay:690ms"></i></div><div class="nm">Cachaña</div></div>
+  </div>
+  <div class="grid g2 fragment fade-up" style="margin-top:0.4rem">
+    <div class="card hl">
+      <h3 style="font-size:0.66em">Paleta desde su propio logo</h3>
+      <p class="tiny">El admin sube el logo o una foto del local: la app <strong>extrae los colores dominantes</strong> y deriva una paleta completa, clara y oscura. Después la afina color por color.</p>
+    </div>
+    <div class="card">
+      <h3 style="font-size:0.66em">Sin romper la legibilidad</h3>
+      <p class="tiny">Un <strong>aviso de contraste</strong> avisa en vivo si una combinación no cumple accesibilidad (WCAG AA). Nadie se deja el texto ilegible sin saberlo.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 30 · Paleta en acción -->
+<section>
+  <span class="kicker">La misma app, dos gimnasios</span>
+  <h2 class="display">No es un logo cambiado.<br>Es la app entera.</h2>
+  <div class="duo" style="margin-top:1.6rem">
+    <div class="phone"><img src="img/31_paleta_gimnasio_a.jpg" alt="El mismo panel, paleta Teal"></div>
+    <div class="phone"><img src="img/32_paleta_gimnasio_b.jpg" alt="El mismo panel, otra paleta"></div>
+  </div>
+</section>
+
+<!-- 31 · ⭐ IA -->
+<section>
+  <div class="split">
+    <div>
+      <span class="chip star" style="margin-bottom:0.9rem"><svg width="13" height="13"><use href="#i-sparkles"/></svg> Nos distingue</span>
+      <h2 class="display">Un asistente que<br>conoce tu gimnasio.</h2>
+      <p class="small muted">Chat dentro de la app <strong>y por WhatsApp</strong>. Mismas capacidades, distinta presentación.</p>
+      <ul class="small">
+        <li class="fragment fade-up">"¿Qué clases hay mañana?" · "¿Cuántos créditos me quedan?" · "¿Cuál es mi racha?"</li>
+        <li class="fragment fade-up">"Resérvame CrossFit del jueves a las 19:00" → deja la reserva lista y <strong>pide confirmación</strong>. Nunca ejecuta solo.</li>
+        <li class="fragment fade-up">Avisa la consecuencia antes: <em>"consume 1 crédito · te quedarán 3"</em>, o <em>"la clase está llena: entrarás a la lista de espera"</em>.</li>
+        <li class="fragment fade-up">Responde con <strong>mini-gráficos con color</strong> en la app; en WhatsApp, en texto.</li>
+        <li class="fragment fade-up">Se le puede <strong>hablar</strong> en vez de escribir, y responde palabra por palabra mientras piensa.</li>
+      </ul>
+    </div>
+    <div class="duo">
+      <div class="phone"><img src="img/34_ia_chat_app.jpg" alt="Asistente en la app"></div>
+      <div class="phone"><img src="img/35_ia_whatsapp.jpg" alt="Asistente por WhatsApp"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 32 · IA por rol -->
+<section>
+  <span class="kicker">Asistente</span>
+  <h2 class="display">Cada rol pregunta lo suyo.</h2>
+  <p class="small muted">El límite no es una instrucción al modelo: <strong>las herramientas que no corresponden al rol simplemente no existen</strong> en su catálogo.</p>
+  <table style="margin-top:1rem">
+    <thead><tr><th>Puede preguntar por…</th><th>Cliente</th><th>Instructor</th><th>Admin</th></tr></thead>
+    <tbody>
+      <tr class="fragment fade-up"><td>Sus clases, reservas, créditos y récords</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td></tr>
+      <tr class="fragment fade-up"><td>Su análisis personal (asociaciones honestas)</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td></tr>
+      <tr class="fragment fade-up"><td>Reservar y cancelar (con confirmación)</td><td class="yes">●</td><td class="yes">●</td><td class="yes">●</td></tr>
+      <tr class="fragment fade-up"><td>Estadísticas de <strong>sus</strong> clases y <strong>sus</strong> alumnos</td><td class="no">—</td><td class="yes">●</td><td class="yes">●</td></tr>
+      <tr class="fragment fade-up"><td>Alumnos en riesgo de dejar de venir</td><td class="no">—</td><td class="yes">●</td><td class="yes">●</td></tr>
+      <tr class="fragment fade-up"><td>Estadísticas del gimnasio completo, año, ranking</td><td class="no">—</td><td class="no">—</td><td class="yes">●</td></tr>
+      <tr class="fragment fade-up"><td>Consultar a cualquier persona por nombre</td><td class="no">—</td><td class="no">—</td><td class="yes">●</td></tr>
+    </tbody>
+  </table>
+  <p class="tiny muted fragment fade-up" style="margin-top:0.9rem">Nunca entrega datos de contacto de terceros, nunca da cifras de ingresos por chat (deja el botón a la sección), y si no hay datos suficientes lo dice en vez de inventar.</p>
+</section>
+
+<!-- 33 · Notificaciones -->
+<section>
+  <span class="kicker">Que nadie falte por olvido</span>
+  <h2 class="display">Notificaciones y tiempo real.</h2>
+  <div class="grid g4" style="margin-top:1.5rem">
+    <div class="card fragment fade-up"><span class="ico"><svg width="20" height="20"><use href="#i-bell"/></svg></span><h3>En la app</h3><p>Bandeja de entrada con campana. Reservas, recordatorios, cupo liberado, vencimientos.</p></div>
+    <div class="card fragment fade-up"><span class="ico"><svg width="20" height="20"><use href="#i-msg"/></svg></span><h3>Correo</h3><p>Plantillas editables por el gimnasio, y un interruptor por evento: qué se manda y qué no.</p></div>
+    <div class="card fragment fade-up"><span class="ico"><svg width="20" height="20"><use href="#i-phone"/></svg></span><h3>Push nativo</h3><p>Notificaciones al celular en iOS y Android.</p></div>
+    <div class="card hl fragment fade-up"><span class="ico"><svg width="20" height="20"><use href="#i-radio"/></svg></span><h3>Tiempo real</h3><p>La clase en vivo se actualiza sola: lo que el alumno confirma, el instructor lo ve al instante.</p></div>
+  </div>
+  <p class="small muted fragment fade-up" style="margin-top:1.5rem">Además: entrar <strong>sin contraseña</strong> (código al correo), con <strong>Google</strong>, o con correo y clave de siempre.</p>
+</section>
+
+<!-- 34 · Nativo -->
+<section>
+  <span class="kicker">Dónde vive</span>
+  <h2 class="display">App nativa, no una web disfrazada.</h2>
+  <div class="grid g4" style="margin-top:1.7rem">
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-phone"/></svg></span>
+      <h3>iOS y Android</h3>
+      <p>Aplicaciones nativas en las dos tiendas, más la web para el escritorio del administrador.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-bell"/></svg></span>
+      <h3>Push de verdad</h3>
+      <p>Notificaciones al celular, cámara para las fotos de progreso, comportamiento de app.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-palette"/></svg></span>
+      <h3>Claro y oscuro</h3>
+      <p>Los dos modos, completos, con la paleta del gimnasio resuelta en ambos.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="ico"><svg width="20" height="20"><use href="#i-check"/></svg></span>
+      <h3>Para el pulgar</h3>
+      <p>La acción principal de cada pantalla siempre al alcance de una mano.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 35 · Y además -->
+<section>
+  <span class="kicker">Y además</span>
+  <h2 class="display">Detalles que se notan al usarla.</h2>
+  <div class="grid g3" style="margin-top:1.4rem">
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Un socio, varios gimnasios</h3><p class="tiny">Si entrena en dos lugares, cambia de gimnasio deslizando el dedo. Cada uno con su color y sus reglas.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Solicitudes de sesión</h3><p class="tiny">El socio pide una clase que no está en el horario; el gimnasio la aprueba asignando instructor y cupo.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Salud del miembro</h3><p class="tiny">Un puntaje de 0 a 100 por socio, con los factores que lo explican. Sabes a quién llamar antes de perderlo.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Cuatro planes</h3><p class="tiny">Gratuito (hasta 10 socios, para siempre), Starter, Pro y Enterprise. Cada uno enciende sus módulos.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Entrar sin fricción</h3><p class="tiny">Código al correo, cuenta de Google, o clave de siempre. Invitación por link para sumar socios.</p></div>
+    <div class="card fragment fade-up"><h3 style="font-size:0.62em">Accesible de verdad</h3><p class="tiny">Contraste AA en claro y oscuro, toda animación respeta "menos movimiento", botones pensados para el pulgar.</p></div>
+  </div>
+</section>
+
+<!-- 36 · Comparativa -->
+<section>
+  <span class="kicker">En resumen</span>
+  <h2 class="display">Contra lo que hay hoy.</h2>
+  <table style="margin-top:1.2rem">
+    <thead><tr><th></th><th>Apps de gym típicas</th><th>PhullApp</th></tr></thead>
+    <tbody>
+      <tr class="fragment fade-up"><td>El panel</td><td class="muted">Un menú</td><td class="yes">Tarjetas que aparecen cuando sirven</td></tr>
+      <tr class="fragment fade-up"><td>Durante la clase</td><td class="muted">La app no participa</td><td class="yes">Widget en vivo con registro gamificado</td></tr>
+      <tr class="fragment fade-up"><td>Registro de cargas</td><td class="muted">Planilla aparte o nada</td><td class="yes">Autoguardado, con rutina precargada</td></tr>
+      <tr class="fragment fade-up"><td>Identidad del gimnasio</td><td class="muted">El logo, y nada más</td><td class="yes">Paleta completa + banner + widgets por rol</td></tr>
+      <tr class="fragment fade-up"><td>Consultas</td><td class="muted">Navegar y buscar</td><td class="yes">Asistente IA en la app y por WhatsApp</td></tr>
+      <tr class="fragment fade-up"><td>Migrar desde tu planilla</td><td class="muted">A mano, uno por uno</td><td class="yes">Importación CSV/XLSX con planes e invitaciones</td></tr>
+      <tr class="fragment fade-up"><td>Estadísticas</td><td class="muted">Cuántos vinieron</td><td class="yes">Cohortes, retención, riesgo, año, instructores</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 36 · Estado -->
+<section>
+  <span class="kicker">Dónde estamos</span>
+  <h2 class="display">Beta esta semana.<br>Tiendas la próxima.</h2>
+  <div class="grid g3" style="margin-top:1.8rem">
+    <div class="card hl fragment fade-up">
+      <span class="chip on" style="margin-bottom:0.6rem">Ahora</span>
+      <h3>Testeo final</h3>
+      <p>Prueba en dispositivos reales de los tres roles, con datos reales de un gimnasio piloto.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="chip" style="margin-bottom:0.6rem">Próxima semana</span>
+      <h3>App Store y Google Play</h3>
+      <p>Publicación de la versión inicial en ambas tiendas.</p>
+    </div>
+    <div class="card fragment fade-up">
+      <span class="chip" style="margin-bottom:0.6rem">Después</span>
+      <h3>Lo que sigue</h3>
+      <p>Metas y hitos, presencia en vivo, tablero de récords, integración con relojes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 37 · CIERRE -->
+<section class="cover" data-auto-animate>
+  <img class="logo" src="assets/phullapp_logo_only.svg" alt="" style="width:120px; margin-bottom:1.6rem">
+  <p class="small muted" style="letter-spacing:0.2em; text-transform:uppercase; font-size:0.42em">phul · پھول · flor</p>
+  <h1 class="display" style="font-size:2.2em; margin-top:1rem">La flor de albaricoque florece<br>aunque nadie la vea.</h1>
+  <p class="sub" style="font-size:0.6em">No porque sea el momento perfecto,<br>sino porque el momento de florecer siempre es ahora.</p>
+  <p class="display grad" style="font-size:1.5em; margin-top:2rem">Tu gym merece lo mismo.</p>
+</section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>
+  Reveal.initialize({
+    width: 1280,
+    height: 720,
+    margin: 0.07,
+    minScale: 0.2,
+    maxScale: 1.6,
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    controls: true,
+    controlsTutorial: false,
+    progress: true,
+    center: true,
+    plugins: [RevealNotes],
+  });
+
+  // Los fragmentos sin clase de animación explícita usan el fade-up de marca.
+  document.querySelectorAll('.reveal .fragment').forEach(function (el) {
+    if (!el.className.match(/fade-|grow|shrink|highlight|zoom/)) el.classList.add('fade-up');
+  });
+
+  // Mientras falte una captura, en su lugar se dibuja un marcador con el nombre exacto
+  // del archivo que hay que dejar en img/. Al agregarla, el marcador desaparece solo.
+  document.querySelectorAll('.phone img, .laptop img').forEach(function (img) {
+    img.addEventListener('error', function () {
+      var ph = document.createElement('div');
+      ph.className = 'missing';
+      ph.innerHTML = '<span class="mn">' + img.getAttribute('src') + '</span>'
+                   + '<span class="ma">' + (img.getAttribute('alt') || '') + '</span>';
+      img.replaceWith(ph);
+    });
+  });
+</script>
+</body>
+</html>
